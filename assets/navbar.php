@@ -136,7 +136,22 @@
         </div>
 
         <div class="col-md-1 order-md-4 order-3 col pr-0 mx-0" id="cart">
-            <button class="btn btn-light text-white mx-0 my-2 my-sm-0 p-0" style="background: transparent;outline: none;border: none;"><i style="font-size: 20px;" class="fas fa-shopping-cart p-0 m-0"></i></button><sup class="badge badge-danger">1</sup>
+            <a href="/Ecommerce%20website%20--%20doSoDeal/cart" class="btn btn-light text-white mx-0 my-2 my-sm-0 p-0" style="background: transparent;outline: none;border: none;"><i style="font-size: 20px;" class="fas fa-shopping-cart p-0 m-0"></i></a><sup class="badge badge-danger" id="countingCart" style="position: relative;top: -15px;left: -10px;">
+                
+                <?php
+
+                if(isset($_COOKIE['currentCartValue'])) {
+
+                    echo $_COOKIE['currentCartValue'];
+                }
+
+                else {
+
+                    echo "0";
+                }
+
+                ?>
+            </sup>
         </div>
 
     </div>

@@ -22,7 +22,7 @@ $userG = 'Greetings';
 	<!-- Bootstrap CSS CDN -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<!-- Custom CSS -->
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="http://localhost/Ecommerce%20website%20--%20doSoDeal/style.css">
 	<!-- Scrollbar Custom CSS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 
@@ -67,8 +67,8 @@ $userG = 'Greetings';
 				<div style="position: sticky;top:;"><img src="data:image/jpeg;base64,<?php echo base64_encode($image); ?>" class="w-100"></div>
 				<div class="row p-2 m-0 d-flex justify-content-center">
 					<div class="btn-group w-100">
-						<div class="col-sm-6 col-12 text-center btn btn-lg btn-success" style="font-size: 15px;"><i  class="fas fa-shopping-cart p-0 mr-2"></i>ADD TO CART</div>
-						<div class="col-sm-6 col-12 text-center btn btn-lg btn-danger" style="font-size: 15px;"> <i  class="fas fa-shopping-cart p-0 mr-2"></i>BUY NOW</div>
+						<button onclick="countCart()" class="col-sm-6 col-12 text-center btn btn-lg btn-success" style="font-size: 15px;"><i  class="fas fa-shopping-cart p-0 mr-2"></i>ADD TO CART</button>
+						<a class="text-white col-sm-6 col-12 text-center btn btn-lg btn-danger" style="font-size: 15px;"> <i  class="fas fa-shopping-cart p-0 mr-2"></i>BUY NOW</a>
 					</div>
 				</div>
 			</div>
@@ -82,11 +82,11 @@ $userG = 'Greetings';
 
 					<div class="text-dark">
 						<h6 class="">Availabale offers</h6>
-						<p><i  class="fas fa-shopping-cart p-0 mr-2"></i>Bank Offer5% Unlimited Cashback on Flipkart Axis Bank Credit Card</p>
-						<p><i  class="fas fa-shopping-cart p-0 mr-2"></i>Bank OfferExtra 5% off* with Axis Bank Buzz Credit Card</p>
-						<p><i  class="fas fa-shopping-cart p-0 mr-2"></i>Get upto ₹14050 off on exchange</p>
-						<p><i  class="fas fa-shopping-cart p-0 mr-2"></i>Special PriceExtra ₹16000 discount(price inclusive of discount)</p>
-						<p><i  class="fas fa-shopping-cart p-0 mr-2"></i>No cost EMI ₹2,500/month. Standard EMI also available</p><br>
+						<p><i  class="fas fa-shopping-cart p-0 mr-2"  style="color: #17a2b8;"></i>Bank Offer5% Unlimited Cashback on Flipkart Axis Bank Credit Card</p>
+						<p><i  class="fas fa-shopping-cart p-0 mr-2"  style="color: #17a2b8;"></i>Bank OfferExtra 5% off* with Axis Bank Buzz Credit Card</p>
+						<p><i  class="fas fa-shopping-cart p-0 mr-2"  style="color: #17a2b8;"></i>Get upto ₹14050 off on exchange</p>
+						<p><i  class="fas fa-shopping-cart p-0 mr-2"  style="color: #17a2b8;"></i>Special PriceExtra ₹16000 discount(price inclusive of discount)</p>
+						<p><i  class="fas fa-shopping-cart p-0 mr-2"  style="color: #17a2b8;"></i>No cost EMI ₹2,500/month. Standard EMI also available</p><br>
 					</div><hr>
 
 					<div class="row">
@@ -104,7 +104,7 @@ $userG = 'Greetings';
 					<div class="row">
 						<div class="col-3 text-muted">Highlights</div>
 						<div class="col-9">
-							<ul>
+							<ul style="list-style-type: circle;">
 								<li>6 GB RAM | 128 GB ROM</li>
 								<li>16.23 cm (6.39 inch) Display</li>
 								<li>4000 mAh Battery</li>
@@ -133,6 +133,9 @@ $userG = 'Greetings';
 
 <script type="text/javascript">
 
+	var arr = ['<?php echo $Pid ?>','<?php echo $cat ?>'];
+	var PidAndCart = JSON.stringify(arr);
+
 	$(document).ready(function () {
 
 		$("#sidebar").mCustomScrollbar({
@@ -151,6 +154,58 @@ $userG = 'Greetings';
 			$('a[aria-expanded=true]').attr('aria-expanded', 'false');
 		});
 	});
+
+	var cartValue = $('#countingCart').html();
+	var i = 0;
+
+	function countCart() {
+
+		var productDataD = getCookie('PidAndCartName'+"["+arr+"]");
+
+		if(productDataD != '') {
+
+			alert('already added to cart');
+		}
+
+		else {
+			
+			cartValue++;
+			i++;
+
+			$('#countingCart').html(cartValue);
+
+			var d = new Date();
+
+			d.setTime(d.getTime() + (10*24*60*60*1000));
+
+			var expires = "expires="+ d.toUTCString();
+
+			document.cookie = "currentCartValue =" + cartValue + ";" + expires + ";path=/";
+
+			document.cookie = "PidAndCartName" + "["+arr+"]" +" =" + PidAndCart + ";" + expires + ";path=/";
+		}
+	}
+
+
+	function getCookie(cname) {
+
+		var name = cname + "=";
+		var decodedCookie = decodeURIComponent(document.cookie);
+		var ca = decodedCookie.split(';');
+
+		for(var i = 0; i < ca.length; i++) {
+			var c = ca[i];
+			while (c.charAt(0) == ' ') {
+				c = c.substring(1);
+			}
+			if (c.indexOf(name) == 0) {
+				return c.substring(name.length, c.length);
+			}
+		}
+
+		return "";
+	}
+
 
 </script>
 </body>

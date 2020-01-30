@@ -369,7 +369,7 @@
 @media(max-width: 360px) {
 
     #lgingAndorders {
-        margin-left: 30.2px !important;
+        margin-left: 24px !important;
         margin-right: 0 !important;
         padding: 0;
 
@@ -385,7 +385,27 @@
 @media(max-width: 340px) {
 
     #lgingAndorders {
-        margin-left: 24.2px !important;
+        margin-left: 22.2px !important;
+        margin-right: 5px !important;
+        padding: 0;
+        position: relative;
+        left: 25px;
+
+    }
+
+    #cart {
+        margin-left: 5px !important;
+        padding: 0 !important;
+        position: relative;
+        left: 25px;
+        /*margin-right: -60px !important;*/
+    }
+}
+
+@media(max-width: 327px) {
+
+    #lgingAndorders {
+        margin-left: 17px !important;
         margin-right: 5px !important;
         padding: 0;
         position: relative;
@@ -406,7 +426,7 @@
 
     #lgingAndorders {
         margin: 0 !important;
-        margin-left: 21.9px !important;
+        margin-left: 14.1px !important;
         margin-right: 5.01px !important;
         padding: 0;
         position: relative;
