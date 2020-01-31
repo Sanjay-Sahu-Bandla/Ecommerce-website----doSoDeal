@@ -114,6 +114,8 @@ if(isset($_POST['login-email'])&&isset($_POST['login-password'])) {
 	$sql = "SELECT *FROM users ";
 	$query = mysqli_query($con,$sql);
 
+	$i = 0;
+
 	if(mysqli_num_rows($query)>0) {
 
 		while ($record = mysqli_fetch_array($query)) {
@@ -135,8 +137,20 @@ if(isset($_POST['login-email'])&&isset($_POST['login-password'])) {
 				setcookie($user, $userName, time() + (86400), '/');
 				setcookie($userG, $userName, time() + (5), '/');
 
-				header('location:../index.php');
+				header('location:/Ecommerce%20website%20--%20doSoDeal/index.php');
 
+			}
+
+			else {
+
+				if($i == 0){
+
+					echo "<script>alert('invalid mail id or password')</script>";
+
+					header('location:../index.php?valid=invalid');
+
+					$i=1;
+				}
 			}
 			
 		}

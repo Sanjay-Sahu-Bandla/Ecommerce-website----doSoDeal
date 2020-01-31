@@ -43,151 +43,36 @@ $userG = 'Greetings';
     <!-- jQuery Custom Scroller CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
+    <!-- custom js control -->
+    <script type="text/javascript" src="control.js"></script>
+
 </head>
 
 <body>
 
-    <!-- Login Modal -->
-    <div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Log in !</h5>
-                    <button id="loginClose" type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
+    <?php include_once("assets/Login.php"); ?>
 
-                <div class="modal-body">
-                    <form action="Database/operations.php"method="post">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" name="login-email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" name="login-password" class="form-control" id="exampleInputPassword1">
-                        </div>
-                        <button type="submit" class="btn btn-primary" style="background: #17a2b8; border:none;">Submit</button>
-                        <div class="form-group text-right mb-0">
-                            <button onclick="createAccount()" type="button" class="bg-white btn btn-light" for="exampleCheck1" style="font-size: 12px; color: #17a2b8 ;">Create new account !</button>
-                        </div>
-                    </form>
-                </div>
+    <?php include_once("Database/db.php"); ?>
 
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <a href="facebook.php" class="btn btn-primary" onclick="FB()" style="background: #17a2b8; border:none;">Continue</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    <div class="container-fluid">
 
-    <!-- Create Account Modal -->
+        <!-- Navigation Bar -->
+        <?php include_once('assets/navbar.php') ?>
 
-    <button id="signUp" class="d-none btn btn-sm btn-light" data-toggle="modal" data-target="#createAccountModel" style="border-top-right-radius: 4px;border-bottom-right-radius: 4px;">createAccountModel</button>
+        <!-- Product Container -->
 
-    <div class="modal fade" id="createAccountModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Sign Up !</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
+        <!-- Carousel -->
 
-                <div class="modal-body">
-
-                    <form id="signUpFom" action="Database/operations.php" method="post" onsubmit="return validate()">
-
-                        <input type="hidden" name="id" value="<?php echo uniqid(); ?>">
-
-                        <div class="form-row">
-                        <div class="form-group col-md-6">
-                          <label for="inputEmail4" class="">First name</label>
-                          <small class='d-inline form-text text-danger'>*</small>
-                          <input type="text" class="form-control" name="firstName" required id="inputEmail4">
-                      </div>
-                      <div class="form-group col-md-6">
-                          <label for="lastName">Last name</label>
-                          <small class='d-inline form-text text-danger'>*</small>
-                          <input type="text" name="lastName" required class="form-control" id="lastName">
-                      </div>
-                    </div>
-                  <div class="form-group">
-                    <label for="inputEmail4">Email</label>
-                    <small class='d-inline form-text text-danger'>*</small>
-                    <input type="email" class="form-control" name="mail" required id="inputEmail4">
-                </div>
-                      <div class="form-row">
-                      <div class="form-group col-md-6">
-                          <label for="inputPassword1">Password</label>
-                          <small class='d-inline form-text text-danger'>*</small>
-                          <input type="password" name="password" required class="form-control" id="inputPassword1" minlength="4">
-                      </div>
-                        <div class="form-group col-md-6">
-                          <label for="inputPassword2">Confirm Password</label>
-                          <small class='d-inline form-text text-danger'>*</small>
-                        <input type="password" name="repeat-password" required class="form-control" id="inputPassword2" minlength="4">
-                      </div>
-                  </div>
-                <div class="form-group">
-                    <label for="inputAddress">Address</label>
-                    <input type="text" name="address" class="form-control" id="inputAddress" placeholder="Apartment, studio, or floor">
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                      <label for="inputCity">City</label>
-                      <input type="text" class="form-control" id="inputCity" name="city">
-                  </div>
-                  <div class="form-group col-md-4">
-                      <label for="inputState">State</label>
-                      <select id="inputState" class="form-control" name="state">
-                        <option selected>Choose...</option>
-                        <option >Telangana</option>
-                        <option >Maharashtra</option>
-                        <option >Delhi</option>
-                        <option>Karnataka</option>
-                    </select>
-                </div>
-                <div class="form-group col-md-2">
-                  <label for="inputZip">Pincode</label>
-                  <input type="text" class="form-control" id="inputZip" name="pincode">
-              </div>
-          </div>
-          <div class="text-right">              
-              <button onclick="signUp()" type="submit" class="text-right btn btn-primary" style="background: #17a2b8; border:none;">Sign Up</button>
-          </div>
-      </form>
-  </div>
-</div>
-</div>
-</div>
-
-
-<?php include_once("Database/db.php"); ?>
-
-<div class="container-fluid">
-
-    <!-- Navigation Bar -->
-    <?php include_once('assets/navbar.php') ?>
-
-    <!-- Product Container -->
-
-    <!-- Carousel -->
-
-    <div class="carouselBanner">
-        <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-                <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner" role="listbox" style="max-height: 420px !important; width: 100%;">
-                <div class="carousel-item active" data-interval="4000">
-                    <img src="images/offerClothes1.jpg" class="rounded shadow d-block w-100" alt="..." style="max-height: 420px !important;">
+        <div class="carouselBanner">
+            <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox" style="max-height: 420px !important; width: 100%;">
+                    <div class="carousel-item active" data-interval="4000">
+                        <img src="images/offerClothes1.jpg" class="rounded shadow d-block w-100" alt="..." style="max-height: 420px !important;">
                         <!-- <div class="carousel-caption d-none d-md-block">
                           <h5>Second slide label</h5>
                           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -332,50 +217,8 @@ $userG = 'Greetings';
 
         <div class="overlay"></div>
 
-        <script type="text/javascript">
+        <!-- custom js control -->
+    <script type="text/javascript" src="control.js"></script>
+    </body>
 
-            $(document).ready(function () {
-
-                $("#sidebar").mCustomScrollbar({
-                    theme: "minimal"
-                });
-
-                $('#dismiss, .overlay').on('click', function () {
-                    $('#sidebar').removeClass('active');
-                    $('.overlay').removeClass('active');
-                });
-
-                $('#sidebarCollapse').on('click', function () {
-                    $('#sidebar').addClass('active');
-                    $('.overlay').addClass('active');
-                    $('.collapse.in').toggleClass('in');
-                    $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-                });
-            });
-
-            function createAccount() {
-
-                $('#signUp').click();
-                $('#loginClose').click();
-
-            }
-
-            function validate() {
-
-                var pswd1 = $('#inputPassword1').val();
-                var pswd2 = $('#inputPassword2').val();
-
-                if(pswd1 != pswd2) {
-                    alert('Password is not matched');
-                    return false;
-                }
-                else {
-                    return true;
-                }
-
-            }
-
- </script>
-</body>
-
-</html>
+    </html>

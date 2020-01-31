@@ -38,12 +38,19 @@ $userG = 'Greetings';
 	<!-- jQuery Custom Scroller CDN -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
+    <!-- custom js control -->
+    <script type="text/javascript" src="http://localhost/Ecommerce%20website%20--%20doSoDeal/control.js"></script>
+
+
 </head>
 
 <body>
 
 	<?php include_once("Database/db.php"); ?>
 	<?php include_once("Database/operations.php"); ?>
+
+	<?php include_once("assets/Login.php"); ?>
+
 
 
 	<!-- Navigation Bar -->
@@ -131,30 +138,14 @@ $userG = 'Greetings';
 
 <div class="overlay"></div>
 
+
+    <!-- custom js control -->
+    <script type="text/javascript" src="control.js"></script>
 <script type="text/javascript">
 
 	var arr = ['<?php echo $Pid ?>','<?php echo $cat ?>'];
 	var PidAndCart = JSON.stringify(arr);
-
-	$(document).ready(function () {
-
-		$("#sidebar").mCustomScrollbar({
-			theme: "minimal"
-		});
-
-		$('#dismiss, .overlay').on('click', function () {
-			$('#sidebar').removeClass('active');
-			$('.overlay').removeClass('active');
-		});
-
-		$('#sidebarCollapse').on('click', function () {
-			$('#sidebar').addClass('active');
-			$('.overlay').addClass('active');
-			$('.collapse.in').toggleClass('in');
-			$('a[aria-expanded=true]').attr('aria-expanded', 'false');
-		});
-	});
-
+	
 	var cartValue = $('#countingCart').html();
 	var i = 0;
 

@@ -5,15 +5,6 @@
 $user = 'user';
 $userG = 'Greetings';
 
-	// if(isset($_COOKIE['PidAndCartName'])) {
-
-	// 	// $str = json_decode($_COOKIE['PidAndCartName'], true);
-	//     foreach ($_COOKIE['PidAndCartName'] as $name => $value) {
-	//         $name = htmlspecialchars($name);
-	//         $value = htmlspecialchars($value);
-	//         echo "$name : $value <br />\n";
-	//     }
-	// }
 ?>
 
 <!DOCTYPE html>
@@ -47,6 +38,10 @@ $userG = 'Greetings';
 	<!-- jQuery Custom Scroller CDN -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
+	<!-- custom js control -->
+	<script type="text/javascript" src="control.js"></script>
+
+
 	<style type="text/css">
 		
 		.caret {
@@ -63,6 +58,7 @@ $userG = 'Greetings';
 	<?php include_once("Database/db.php"); ?>
 	<?php include_once("Database/operations.php"); ?>
 
+	<?php include_once("assets/Login.php"); ?>
 
 	<!-- Navigation Bar -->
 	<?php include_once('assets/navbar.php') ?>
@@ -79,31 +75,20 @@ $userG = 'Greetings';
 
 							<?php
 
+							global $disable,$Cid,$Ccat;
+							$disable = 0;
+
 							if(isset($_COOKIE['PidAndCartName'])) {
 
 								foreach ($_COOKIE['PidAndCartName'] as $name => $value) {
 									$name = htmlspecialchars($name);
 									$value = htmlspecialchars($value);
 
-									// $name = str_replace(' ', '-', $name);
-									// $value = str_replace(' ', '-', $value);
-
-									// preg_replace('/[^A-Za-z0-9\-]/', '', $name);
-									// preg_replace('/[^A-Za-z0-9\-]/', '', $value);
-
-									// echo "$name[0]<br />\n";
-									// echo substr($name, 2)." <br />\n";
-
-									// $names = $name[0];
-									// echo $names[1];
-
 									$Cid = $name[0];
 									$Ccat = substr($name, 2);
 
-
-// Cart Dat
-
-// function getProductData($con,$Cid,$Ccat) {
+									echo '<span id="Cid" class="d-none">'.$Cid.'</span>';
+									echo '<span id="Ccat" class="d-none">'.$Ccat.'</span>';
 
 									$sql = "SELECT * FROM $Ccat WHERE id = '$Cid'";
 									$query = mysqli_query($con,$sql);
@@ -129,20 +114,20 @@ $userG = 'Greetings';
 											<h3>'.number_format($record['price']).'</h3><br>
 
 											<div class="btn-group btn-group-sm">
-											<input type="button" name="" class="btn btn-secondary" value="-" onclick="decrease()">
-											<input type="number" name="noOfProducts" class="form-control form-control-sm btn btn-light w-50" value="1" id="noOfProducts">
-											<input type="button" name="" class="btn btn-secondary" value="+" onclick="increase()">
+												<div class="btn btn-secondary" id="removeProduct" onclick="removeProduct('."'".$Cid."','".$Ccat."'".')">Remove</div>
 											</div>
 											</div><span class="caret"></span>';
 										}
 									}
-// }
-
-
-									// getProductData($con,$Cid,$Ccat);
 
 								}					
 
+							}
+
+							else {
+								echo "<div class='ml-3 text-weight-bolder text-danger'>No product selected !</div>";
+
+								$disable = 1;
 							}
 
 							?>
@@ -164,6 +149,7 @@ $userG = 'Greetings';
 							<tr>
 
 								<?php
+								global $sum;
 
 								if(isset($_COOKIE['PidAndCartName'])) {
 
@@ -177,12 +163,10 @@ $userG = 'Greetings';
 										$sql = "SELECT *, SUM(price) AS total_money FROM $Ccat WHERE id = '$Cid'";
 										$query = mysqli_query($con,$sql);
 
-										global $sum;
-
 										if(mysqli_num_rows($query) > 0) {
 
 											while ($record = mysqli_fetch_array($query)) {
-	
+
 												$total = $record['total_money'];
 
 												$sum += $total;
@@ -193,8 +177,10 @@ $userG = 'Greetings';
 												$cartTitle = $record['title'];
 
 												?>
-												<td><?php echo $cartTitle; ?></td>
-												<td><?php echo number_format($cartPrice); ?></td>
+												<td><?php echo $cartTitle; ?><span class="mr-2" id="productCount"></span></td>
+												<td id="price"><?php echo number_format($cartPrice); ?></td>
+
+												<span id="hidden_price" class="d-none"><?php echo $cartPrice; ?></span>
 											</tr>
 											<tr><?php }}}} ?>
 											<td>Delivery Charges</td>
@@ -206,7 +192,10 @@ $userG = 'Greetings';
 										</tr>
 									</table>
 									<div class="text-right">
-										<a href="#" class="btn btn-primary btn-block" style="background: #17a2b8; border: none; outline: none;">Place Order</a>
+										<button onclick="placeOrder()" class="btn btn-primary btn-block" style="background: #17a2b8; border: none; outline: none;"
+
+										<?php if($disable==1) { ?> disabled <?php } ?>
+										>Place Order</button>
 									</div>
 								</div>
 							</div>
@@ -226,25 +215,6 @@ $userG = 'Greetings';
 			<div class="overlay"></div>
 
 			<script type="text/javascript">
-
-				$(document).ready(function () {
-
-					$("#sidebar").mCustomScrollbar({
-						theme: "minimal"
-					});
-
-					$('#dismiss, .overlay').on('click', function () {
-						$('#sidebar').removeClass('active');
-						$('.overlay').removeClass('active');
-					});
-
-					$('#sidebarCollapse').on('click', function () {
-						$('#sidebar').addClass('active');
-						$('.overlay').addClass('active');
-						$('.collapse.in').toggleClass('in');
-						$('a[aria-expanded=true]').attr('aria-expanded', 'false');
-					});
-				});
 
 	// var noOfProducts = $('.noOfProducts').val('16');
 
@@ -278,13 +248,6 @@ $userG = 'Greetings';
 		noOfProducts++;	
 
 		$('.noOfProducts').html(noOfProducts);
-
-		// $(value).next().html(i);
-
-		// $('.noOfProducts').html(noOfProducts);
-
-		// var total = noOfProducts + value;
-		// noOfProducts = total;
 
 		alert(noOfProducts);
 		// $('.noOfProducts').eq(this).val(noOfProducts);

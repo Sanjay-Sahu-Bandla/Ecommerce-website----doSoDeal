@@ -67,7 +67,7 @@
             <a href="#">Portfolio</a>
         </li>
         <li>
-            <a href="#">Contact</a>
+            <a href="mailto:sanjaysahubandla@gmail.com">Contact</a>
         </li>
     </ul>
 
@@ -76,7 +76,20 @@
             <a href="" class="download">Download App</a>
         </li>
         <li>
-            <a href="" class="article">Author - SSB</a>
+            <div class="article">
+
+                <?php
+
+                 if (isset($_COOKIE[$user])) {
+
+                    echo "<div id='logOut' onclick='logOut()'>Log out</div>";
+                }
+
+                else
+
+                    echo "Author - SSB";
+
+                ?></div>
         </li>
     </ul>
 </nav>
@@ -129,7 +142,7 @@
 
                 ?>
                 <button class="btn btn-sm btn-light" data-toggle="modal" data-target="#LoginModal" style="color: #17a2b8; padding-right: 0 !important;"><i class=" fas fa-user" style="color: #17a2b8;"></i></button>
-                <button class="btn btn-sm btn-light" data-toggle="modal" data-target="#LoginModal" style="border-top-right-radius: 4px;border-bottom-right-radius: 4px;">Login</button>
+                <button id="logInBtn" class="btn btn-sm btn-light" data-toggle="modal" data-target="#LoginModal" style="border-top-right-radius: 4px;border-bottom-right-radius: 4px;">Login</button>
                 <button class="btn btn-light" id="orders" style="background: transparent;outline: none;border: none;"><i style="font-size: 20px;" class="text-white fas fa-shopping-basket"></i></button>
 
             <?php } ?>

@@ -194,10 +194,18 @@
         color: #17a2b8;
     }
 
-    a.article,
-    a.article:hover {
+    div.article,
+    div.article:hover {
         background: #17a2b8 !important;
         color: #fff !important;
+        padding: 10px;
+        font-size: 1.1em;
+        text-align: center;
+        font-size: 0.9em !important;
+        display: block;
+        border-radius: 5px;
+        margin-bottom: 5px;
+        cursor: pointer;
     }
 
 /* ---------------------------------------------------
