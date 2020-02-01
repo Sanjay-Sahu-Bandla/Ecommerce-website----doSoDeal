@@ -127,15 +127,16 @@ if(isset($_POST['login-email'])&&isset($_POST['login-password'])) {
 
 
 				$user = 'user';
-				$_SESSION['user'] = $user;
 				$userName = $record['first_name'];
+				$user_id = $record['id'];
 
 				// echo $userName;
 
 				$userG = 'Greetings';
 
+				setcookie('user_id', $user_id, time() + (86400), '/');
 				setcookie($user, $userName, time() + (86400), '/');
-				setcookie($userG, $userName, time() + (5), '/');
+				setcookie($userG, $userName, time() + (2), '/');
 
 				header('location:/Ecommerce%20website%20--%20doSoDeal/index.php');
 

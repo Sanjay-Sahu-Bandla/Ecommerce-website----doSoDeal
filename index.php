@@ -114,6 +114,13 @@ $userG = 'Greetings';
                 include 'Database/operations.php';
 
                 getMobilesData($con);
+                
+
+if(isset($_COOKIE['user'])) {
+
+    header('location:/Ecommerce%20website%20--%20doSoDeal/index.php');
+}
+
 
                 ?>
             </div>
