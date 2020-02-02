@@ -1,7 +1,5 @@
 <?php
 
-// session_start();
-
 $user = 'user';
 $userG = 'Greetings';
 
@@ -145,7 +143,12 @@ $userG = 'Greetings';
 
 	var arr = ['<?php echo $Pid ?>','<?php echo $cat ?>'];
 	var PidAndCart = JSON.stringify(arr);
-	
+
+	var arr = arr[0]+'f'+arr[1];
+
+	// var PidAndCart = PidAndCart.replace('"', '.');
+	// var PidAndCart = PidAndCart.replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, 'f'); 
+
 	var cartValue = $('#countingCart').html();
 	var i = 0;
 

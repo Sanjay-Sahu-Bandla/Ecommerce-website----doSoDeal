@@ -95,7 +95,9 @@ function placeOrder() {
 
 	if(productDataD != '') {
 
-		window.location = 'payPal.php';
+		var unique_order_id = Date.now();
+
+		window.location = 'payment.php?order_id='+unique_order_id;
 	}
 
 	else {
@@ -126,22 +128,55 @@ function getCookie(cname) {
 
 // delete product
 
+var currentCartValue = parseInt(getCookie('currentCartValue'));
+
 function removeProduct(Cid,Ccat) {
 
 	var del_cookie = confirm('Are you sure want remove product');
 
 	if(del_cookie) {
 
-		document.cookie = "PidAndCartName["+Cid+","+Ccat+"]=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+		document.cookie = "PidAndCartName["+Cid+"f"+Ccat+"]=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 		
-		var currentCartValue = Number(getCookie('currentCartValue'));
-		var presentCart = currentCartValue--;
+		currentCartValue--;
 
-		document.cookie = 'currentCartValue=' + presentCart + ';' + ';path=/';
-
-		alert(presentCart);
+		document.cookie = 'currentCartValue=' + currentCartValue + ';' + ';path=/';
 		
 		window.location = '';
 
 	}
 }
+
+var cookieRegistry = [];
+
+function listenCookieChange(cookieName, callback) {
+    setInterval(function() {
+        if (cookieRegistry[cookieName]) {
+            if (readCookie(cookieName) != cookieRegistry[cookieName]) {
+                // update registry so we dont get triggered again
+                cookieRegistry[cookieName] = readCookie(cookieName);
+                return callback();
+            }
+        } else {
+            cookieRegistry[cookieName] = readCookie(cookieName);
+        }
+    }, 100);
+}
+
+
+function readCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
+
+listenCookieChange('cookiename', function() {
+    Location.reload();
+});
+
+window.onload = '';

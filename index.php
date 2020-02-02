@@ -2,12 +2,37 @@
 
 session_start();
 
+if(isset($_SESSION['emptyCart'])) {
+
+    $emptyCart = $_SESSION['emptyCart'];
+
+    if($emptyCart == 'empty') {
+
+        if (isset($_COOKIE['PidAndCartName'])) {
+            foreach ($_COOKIE['PidAndCartName'] as $name => $value) {
+                setcookie("PidAndCartName[".$name."]", "", time() - 1, "/");
+            }
+        }
+
+        if (isset($_COOKIE['currentCartValue'])) {
+                setcookie("currentCartValue", "", time() - 1, "/");
+        }
+
+
+        echo '<script>alert(0)</script>';
+    }
+
+    else {
+      echo '<script>alert(1)</script>';
+
+  }
+
+  session_destroy();
+  header('location:/Ecommerce%20website%20--%20doSoDeal/index.php');
+}
+
 $user = 'user';
 $userG = 'Greetings';
-
-// $userName = 'sanjay';
-
-// setcookie($user, $userName, time() + (86400), '/');
 
 ?>
 
@@ -57,22 +82,35 @@ $userG = 'Greetings';
     <div class="container-fluid">
 
         <!-- Navigation Bar -->
-        <?php include_once('assets/navbar.php') ?>
+        <?php include('assets/navbar.php') ?>
 
         <!-- Product Container -->
 
         <!-- Carousel -->
+        <?php
+     //    if (isset($_COOKIE['PidAndCartName'])) {
+     //        foreach ($_COOKIE['PidAndCartName'] as $name => $value) {
+     //         $name = htmlspecialchars($name);
+     //         $value = htmlspecialchars($value);
+     //         echo "$name : $value <br />\n";
+     //     }
+     // }
 
-        <div class="carouselBanner">
-            <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner" role="listbox" style="max-height: 420px !important; width: 100%;">
-                    <div class="carousel-item active" data-interval="4000">
-                        <img src="images/offerClothes1.jpg" class="rounded shadow d-block w-100" alt="..." style="max-height: 420px !important;">
+     // if (isset($_COOKIE['currentCartValue'])) {
+     //         echo $_COOKIE['currentCartValue'];
+     //    }
+
+     ?>
+     <div class="carouselBanner">
+        <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner" role="listbox" style="max-height: 420px !important; width: 100%;">
+                <div class="carousel-item active" data-interval="4000">
+                    <img src="images/offerClothes1.jpg" class="rounded shadow d-block w-100" alt="..." style="max-height: 420px !important;">
                         <!-- <div class="carousel-caption d-none d-md-block">
                           <h5>Second slide label</h5>
                           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -116,10 +154,10 @@ $userG = 'Greetings';
                 getMobilesData($con);
                 
 
-if(isset($_COOKIE['user'])) {
+                if(!isset($_COOKIE['user'])) {
 
-    header('location:/Ecommerce%20website%20--%20doSoDeal/index.php');
-}
+                    header('location:/Ecommerce%20website%20--%20doSoDeal/index.php');
+                }
 
 
                 ?>
@@ -208,12 +246,6 @@ if(isset($_COOKIE['user'])) {
             </div>
         </div>
 
-        <div class="product-container">
-
-                <!-- <h3>Lorem Ipsum Dolor</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p> -->
-                </div>
-
                 <!-- Footer -->
 
                 <?php include_once('assets/footer.php') ?>
@@ -225,7 +257,7 @@ if(isset($_COOKIE['user'])) {
         <div class="overlay"></div>
 
         <!-- custom js control -->
-    <script type="text/javascript" src="control.js"></script>
+        <script type="text/javascript" src="control.js"></script>
     </body>
 
     </html>

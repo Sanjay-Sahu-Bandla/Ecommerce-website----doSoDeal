@@ -87,6 +87,9 @@ $userG = 'Greetings';
 									$Cid = $name[0];
 									$Ccat = substr($name, 2);
 
+									// echo $Cid;
+									// echo $Ccat;
+
 									echo '<span id="Cid" class="d-none">'.$Cid.'</span>';
 									echo '<span id="Ccat" class="d-none">'.$Ccat.'</span>';
 
@@ -206,7 +209,7 @@ $userG = 'Greetings';
 
 				<!-- Footer -->
 
-				<?php include_once('assets/footer.php') ?>
+				<?php include_once('assets/footer.php'); ?>
 
 			</div> <!-- End of the page -->
 

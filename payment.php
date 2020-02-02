@@ -1,11 +1,25 @@
 <?php
 
-// session_start();
+session_start();
+
+        if(isset($_POST['first_name'])&&($_POST['last_name'])&&($_POST['phone'])&&($_POST['email'])&&($_POST['address'])&&($_POST['state'])&&($_POST['city'])&&($_POST['pincode'])&&($_POST['name_on_card'])&&($_POST['debit_card_no'])&&($_POST['expire'])&&($_POST['cvv'])) {
+
+    $_SESSION['emptyCart'] = 'empty';
+
+    // echo '<script>alert()</script>';
+
+  }
 
 $user = 'user';
 $userG = 'Greetings';
 
 include_once('Database/db.php');
+
+if(isset($_COOKIE['user_id'])) {
+
+  $userId = $_COOKIE['user_id'];
+
+}
 
 ?>
 
@@ -50,84 +64,84 @@ include_once('Database/db.php');
 
   <style type="text/css">
     body {
-    font-family: 'Varela Round', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-  }
-  .modal-confirm {    
-    color: #636363;
-    /*min-width: 325px;*/
-    /*margin: 30px;*/
-  }
-  .modal-confirm .modal-header {
-    border-bottom: none;   
-        position: relative;
-  }
-  .modal-confirm .modal-title {
-    text-align: center !important;
-    font-size: 26px;
-    margin-top: 30px;
-    /*margin: 30px 0 -15px;*/
-  }
-  .modal-confirm .form-control, .modal-confirm .btn {
-    min-height: 40px;
-    border-radius: 3px; 
-  }
-  .modal-confirm .close {
-        position: absolute;
-    top: -5px;
-    right: -5px;
-  } 
-  .modal-confirm .modal-footer {
-    border: none;
-    text-align: center;
-    border-radius: 5px;
-    font-size: 13px;
-  } 
-  .modal-confirm .icon-box {
-    color: #fff;    
-    position: absolute;
-    margin: 0 auto;
-    left: 0;
-    right: 0;
-    top: -70px;
-    width: 95px;
-    height: 95px;
-    border-radius: 50%;
-    z-index: 9;
-    background: #82ce34;
-    padding: 15px;
-    text-align: center;
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
-  }
-  .modal-confirm .icon-box i {
-    font-size: 58px;
-    position: relative;
-    top: -5px;
-    left: 2px;
-    display: flex;
-    align-items: center;
-  }
-  .modal-confirm.modal-dialog {
-    margin-top: 80px;
-  }
-    .modal-confirm .btn {
-        color: #fff;
-        border-radius: 4px;
-    background: #82ce34;
-    text-decoration: none;
-    transition: all 0.4s;
-        line-height: normal;
-        border: none;
+      font-family: 'Varela Round', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
     }
-  .modal-confirm .btn:hover, .modal-confirm .btn:focus {
-    background: #6fb32b;
-    outline: none;
-  }
+    .modal-confirm {    
+      color: #636363;
+      /*min-width: 325px;*/
+      /*margin: 30px;*/
+    }
+    .modal-confirm .modal-header {
+      border-bottom: none;   
+      position: relative;
+    }
+    .modal-confirm .modal-title {
+      text-align: center !important;
+      font-size: 26px;
+      margin-top: 30px;
+      /*margin: 30px 0 -15px;*/
+    }
+    .modal-confirm .form-control, .modal-confirm .btn {
+      min-height: 40px;
+      border-radius: 3px; 
+    }
+    .modal-confirm .close {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+    } 
+    .modal-confirm .modal-footer {
+      border: none;
+      text-align: center;
+      border-radius: 5px;
+      font-size: 13px;
+    } 
+    .modal-confirm .icon-box {
+      color: #fff;    
+      position: absolute;
+      margin: 0 auto;
+      left: 0;
+      right: 0;
+      top: -70px;
+      width: 95px;
+      height: 95px;
+      border-radius: 50%;
+      z-index: 9;
+      background: #82ce34;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+    }
+    .modal-confirm .icon-box i {
+      font-size: 58px;
+      position: relative;
+      top: -5px;
+      left: 2px;
+      display: flex;
+      align-items: center;
+    }
+    .modal-confirm.modal-dialog {
+      margin-top: 80px;
+    }
+    .modal-confirm .btn {
+      color: #fff;
+      border-radius: 4px;
+      background: #82ce34;
+      text-decoration: none;
+      transition: all 0.4s;
+      line-height: normal;
+      border: none;
+    }
+    .modal-confirm .btn:hover, .modal-confirm .btn:focus {
+      background: #6fb32b;
+      outline: none;
+    }
 
-</style>
+  </style>
 
 
 </head>
@@ -342,7 +356,7 @@ include_once('Database/db.php');
             </div>
             <div class="col-md-6 mb-3">
               <label for="cc-number">Debit card number</label>
-              <input type="text" class="form-control" id="cc-number" placeholder="" required name="debit_card_no">
+              <input type="number" class="form-control" id="cc-number" placeholder="" required name="debit_card_no">
               <div class="invalid-feedback">
                 Credit card number is required
               </div>
@@ -358,7 +372,7 @@ include_once('Database/db.php');
             </div>
             <div class="col-md-3 mb-3">
               <label for="cc-expiration">CVV</label>
-              <input type="text" class="form-control" id="cc-cvv" placeholder="" required name="cvv">
+              <input type="number" class="form-control" id="cc-cvv" placeholder="" required name="cvv">
               <div class="invalid-feedback">
                 Security code required
               </div>
@@ -377,7 +391,6 @@ include_once('Database/db.php');
     if(isset($_POST['first_name'])&&($_POST['last_name'])&&($_POST['phone'])&&($_POST['email'])&&($_POST['address'])&&($_POST['state'])&&($_POST['city'])&&($_POST['pincode'])&&($_POST['name_on_card'])&&($_POST['debit_card_no'])&&($_POST['expire'])&&($_POST['cvv'])) {
 
       $orderId = $_GET['order_id'];
-      $userId = $_COOKIE['user_id'];
 
       $firstName = $_POST['first_name'];
       $lastName = $_POST['last_name'];
@@ -396,16 +409,51 @@ include_once('Database/db.php');
       $expire = $_POST['expire'];
       $cvv = $_POST['cvv'];
 
-      $product_id = $Cid;
-      $product_category = $Ccat;
+      $j = 0;
 
-      // include_once('Database/operations.php');
+      if(isset($_COOKIE['PidAndCartName'])) {
 
-      $sql = "INSERT INTO orders VALUES('$orderId','$userId','$firstName', '$lastName', '$phone', '$email', '$address', '$state', '$city', '$pincode', '$name_on_card','$debit_card_no','$expire','$cvv','$product_id','$product_category')";
-      $query = mysqli_query($con,$sql);
+        foreach ($_COOKIE['PidAndCartName'] as $name => $value) {
+         $name = htmlspecialchars($name);
+         $value = htmlspecialchars($value);
 
-      if(!$query) {
-        echo "Something went wrong !";
+         $sql2 = "SELECT *, SUM(price) AS total_money FROM $Ccat WHERE id = '$Cid'";
+         $query2 = mysqli_query($con,$sql2);
+
+         if(mysqli_num_rows($query2) > 0) {
+
+          while ($record = mysqli_fetch_array($query2)) {
+
+            $total = $record['total_money'];
+
+            $sum += $total;
+
+            global $cartPrice, $cartTitle;
+
+            $cartPrice = $record['price'];
+            $cartTitle = $record['title'];
+            $cartCategory = $record['category'];//
+
+         global $query;
+
+         $sql = array();
+
+         $product_id = $name[0];
+         $product_category = substr($name, 2);
+
+         $sql[$j] = "INSERT INTO orders VALUES('$orderId','$userId','$firstName', '$lastName', '$phone', '$email', '$address', '$state', '$city', '$pincode', '$name_on_card','$debit_card_no','$expire','$cvv','$cartTitle','$cartCategory','$sum')";
+
+         $query = mysqli_query($con,$sql[$j]);
+
+         $j++;
+       }
+     }
+
+       }
+
+       if(!$query) {
+        echo "<script>alert('Your order placed successfully. Check them in your orders section !');
+        window.location = '/Ecommerce%20website%20--%20doSoDeal/index.php';</script>";
       }
 
       else {
@@ -416,79 +464,77 @@ include_once('Database/db.php');
 
 
 
-  <!-- Button HTML (to Trigger Modal) -->
-  <a href="#myModal" id="directToHome" class="d-none trigger-btn" data-toggle="modal" id=
-  confirm>Click to Open Confirm Modal</a>
-</div>
+        <!-- Button HTML (to Trigger Modal) -->
+        <a href="#myModal" id="directToHome" class="d-none trigger-btn" data-toggle="modal" id=
+        confirm>Click to Open Confirm Modal</a>
+        </div>
 
-<!-- Modal HTML -->
-<div id="myModal" class="modal fade">
-  <div class="modal-dialog modal-confirm">
-    <div class="modal-content mw-100">
-      <div class="modal-header">
+        <!-- Modal HTML -->
+        <div id="myModal" class="modal fade">
+        <div class="modal-dialog modal-confirm">
+        <div class="modal-content mw-100">
+        <div class="modal-header">
         <div class="icon-box">
-          <i class="material-icons">&#10004;</i>
+        <i class="material-icons">&#10004;</i>
         </div>        
         <div class="modal-title text-center mx-auto">Awesome!</div> 
-      </div>
-      <div class="modal-body">
+        </div>
+        <div class="modal-body">
         <p class="text-center">Your order has been placed successfully. Click ok to go back to the home page.</p>
-      </div>
-      <div class="modal-footer">
+        </div>
+        <div class="modal-footer">
         <div href="http://localhost/Ecommerce%20website%20--%20doSoDeal/" class="d-flex align-items-center justify-content-center btn btn-success btn-block" data-dismiss="modal" onclick="deleteCookies()">OK</div>
-      </div>
-    </div>
-  </div>
-</div>     ';
+        </div>
+        </div>
+        </div>
+        </div>     ';
 
       }
 
     }
+  }
 
-    if(isset($_POST['submit'])) {
+  mysqli_close($con);
 
-      // setcookie("user", "", time() - 3600);
-      // echo '<script>alert()</script>';
-    }
+  ?>
 
-    ?>
+  <script type="text/javascript">
 
-    <script type="text/javascript">
+    function redeem() {
 
-      function redeem() {
+      var promoCode = $('#promoCode').val();
 
-        var promoCode = $('#promoCode').val();
-
-        if(promoCode != '') {
-          alert('Enter valid promo code');
-        }
-
-        else {
-          alert('Promo code is required');
-        }
-
+      if(promoCode != '') {
+        alert('Enter valid promo code');
       }
 
-      $(document).ready(function() {
+      else {
+        alert('Promo code is required');
+      }
 
-        $('#directToHome').click();
+    }
+
+    $(document).ready(function() {
+
+      $('#directToHome').click();
+    });
+
+    function deleteCookies() {
+
+      document.cookie.split(";").forEach(function(c) {
+        var date = new Date();
+        date.setTime(date.getTime()+(10*1000));
+        var expires = "; expires="+date.toGMTString();
+
+
+        
+        // document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + date.toGMTString() + ";path=/"); 
+        window.location = '/Ecommerce%20website%20--%20doSoDeal/index.php';
       });
+    }
 
-      function deleteCookies() {
+  </script>
 
-        document.cookie.split(";").forEach(function(c) {
-          var date = new Date();
-   date.setTime(date.getTime()+(10*1000));
-   var expires = "; expires="+date.toGMTString();
+</body>
 
-          document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + date.toGMTString() + ";path=/"); 
-          window.location = '/Ecommerce%20website%20--%20doSoDeal/index.php';
-        });
-      }
-
-    </script>
-
-
-  </body>
-
-  </html>
+</html>

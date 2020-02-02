@@ -207,5 +207,42 @@ if(isset($_POST['mail'])&&isset($_POST['password'])) {
 
 }
 
+// getting order details
+
+function getOrderDetails($con,$user_id) {
+
+	$sql = "SELECT orders.product_id, orders.product_category, orders.user_id, mobiles.id, mobiles.category
+	FROM orders
+	INNER JOIN mobiles
+	ON mobiles.id=Customers.CustomerID";
+
+
+	$sql = "SELECT *FROM orders WHERE user_id = '$user_id'";
+	$query = mysqli_query($con,$sql);
+
+	if(mysqli_num_rows($query)>0) {
+
+		while ($record = mysqli_fetch_array($query)) {
+
+			echo '<div class="card p-3 m-2 mb-3" style="max-width: 100%; ">
+			<div class="row no-gutters">
+			<div class="col-md-2">
+			<img src="images/realme.jpg" class = "card-img img-responsive w-100   " alt="...">
+			</div>
+			<div class="col-md-10">
+			<div class="card-body">
+			<h5 class="card-title">'.$record['product_id'].'</h5>'.$record['product_id'].'
+			<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+			<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+			</div>
+			</div>
+			</div>
+			</div>';
+
+		}
+	}
+
+}
+
 
 ?>

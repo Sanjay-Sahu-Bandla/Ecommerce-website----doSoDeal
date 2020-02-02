@@ -49,7 +49,7 @@
             </ul>
         </li>
         <li>
-            <a href="#">Orders</a>
+            <a href="orders">Orders</a>
             <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Pages</a>
             <ul class="collapse list-unstyled" id="pageSubmenu">
                 <li>
