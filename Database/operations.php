@@ -211,35 +211,74 @@ if(isset($_POST['mail'])&&isset($_POST['password'])) {
 
 function getOrderDetails($con,$user_id) {
 
-	$sql = "SELECT orders.product_id, orders.product_category, orders.user_id, mobiles.id, mobiles.category
-	FROM orders
-	INNER JOIN mobiles
-	ON mobiles.id=Customers.CustomerID";
+	global $con;
 
-
-	$sql = "SELECT *FROM orders WHERE user_id = '$user_id'";
+	$sql = "SELECT *FROM orders WHERE user_id = '$user_id' ORDER BY ordered_time DESC";
 	$query = mysqli_query($con,$sql);
 
 	if(mysqli_num_rows($query)>0) {
 
 		while ($record = mysqli_fetch_array($query)) {
 
-			echo '<div class="card p-3 m-2 mb-3" style="max-width: 100%; ">
-			<div class="row no-gutters">
-			<div class="col-md-2">
-			<img src="images/realme.jpg" class = "card-img img-responsive w-100   " alt="...">
-			</div>
-			<div class="col-md-10">
-			<div class="card-body">
-			<h5 class="card-title">'.$record['product_id'].'</h5>'.$record['product_id'].'
-			<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-			<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-			</div>
-			</div>
-			</div>
-			</div>';
+			$ordered_time = $record['ordered_time'];
+			$product_id = $record['product_id'];
+			$product_category = $record['product_category'];
+
+			$sql2 = "SELECT * FROM $product_category WHERE id = '$product_id'";
+			$query2 = mysqli_query($con,$sql2);
+
+			if (!$query2) {
+    printf("Error: %s\n", mysqli_error($con));
+    exit();
+}
+
+			if(!$query2 || mysqli_num_rows($query2) > 0) {
+
+				while ($record2 = mysqli_fetch_array($query2)) {
+
+					// global $id, $title, $price, $image;
+
+					$id = $record2['id'];
+					$title = $record2['title'];
+					$price = $record2['price'];
+					$image = $record2['image'];
+
+					echo '<div class="card p-3 m-2 mb-3" style="max-width: 100%; ">
+					<div class="row no-gutters">
+					<div class="col-md-2">
+					<img src="data:image/jpeg;base64,'. base64_encode($image) .'" class = "card-img img-responsive w-100   " alt="...">
+					</div>
+					<div class="col-md-10">
+					<div class="card-body">
+					<h5 class="card-title">'.$title.'</h5>
+					<span class="mr-1">&#8377;</span>'.number_format($price).'
+					<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+					<p class="card-text"><small class="text-muted">
+
+					Ordered on '.$ordered_time.'
+
+					</small></p>
+					</div>
+					</div>
+					</div>
+					</div>';
+
+				}
+			}
 
 		}
+	}
+
+	else {
+
+		echo '<div class="card mx-2">
+		<div class="card-body">
+
+		You have not ordered any products yet !
+
+		</div>
+
+		</div>';
 	}
 
 }

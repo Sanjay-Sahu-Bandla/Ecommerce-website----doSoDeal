@@ -47,6 +47,9 @@ $userG = 'Greetings';
     <!-- custom js control -->
     <script type="text/javascript" src="control.js"></script>
 
+    <!-- Ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -62,58 +65,52 @@ $userG = 'Greetings';
 
             $("#logInBtn").click();
 
-        });
+            });
 
-        </script>';
+            </script>';
 
-    }
+        }
 
-    else {
+        else {
 
-        $user_id = $_COOKIE['user_id'];
+            $user_id = $_COOKIE['user_id'];
 
-    }
-
-    ?>
-
-    <?php
-
-    include_once("assets/Login.php");
-
-    include_once("Database/db.php");
-
-    include_once("Database/operations.php");
-
-    ?>
-
-
-    <div class="container-fluid">
-
-        <!-- Navigation Bar -->
-        <?php include_once('assets/navbar.php');  ?>
-
-        <?php
-
-        getOrderDetails($con,$user_id);
+        }
 
         ?>
 
-        <!-- <div class="card p-3 m-2 mb-3" style="max-width: 100%; ">
-          <div class="row no-gutters">
-            <div class="col-md-2">
-              <img src="images/realme.jpg" class = "card-img img-responsive w-100   " alt="...">
-            </div>
-            <div class="col-md-10">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-              </div>
-            </div>
-          </div>
-        </div> -->
+        <?php
 
-</div>
+        include_once("assets/Login.php");
+
+        include_once("Database/db.php");
+
+        include_once("Database/operations.php");
+
+        ?>
+
+
+        <div class="container-fluid">
+
+            <!-- Navigation Bar -->
+            <?php include_once('assets/navbar.php');  ?>
+
+            <?php
+            
+            if(isset($_COOKIE['user_id'])) {
+
+                getOrderDetails($con,$user_id);
+
+            }
+
+            else {
+
+                echo "<h4>Please log in to see your products</h4>";
+            }
+
+            ?>
+
+  </div>
 
 </div> <!-- container-fluid -->
 

@@ -41,6 +41,9 @@ $userG = 'Greetings';
 	<!-- custom js control -->
 	<script type="text/javascript" src="control.js"></script>
 
+    <!-- Ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 
 	<style type="text/css">
 		

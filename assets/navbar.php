@@ -49,7 +49,7 @@
             </ul>
         </li>
         <li>
-            <a href="orders">Orders</a>
+            <a href="http://localhost/Ecommerce%20website%20--%20doSoDeal/orders">Orders</a>
             <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Pages</a>
             <ul class="collapse list-unstyled" id="pageSubmenu">
                 <li>
@@ -106,15 +106,16 @@
                     <!-- <span>Toggle Sidebar</span> -->
                 </button>
 
-                <a class="navbar-brand text-white" href="#">doSoDeal</a>
+                <a class="navbar-brand text-white" href="http://localhost/Ecommerce%20website%20--%20doSoDeal/">doSoDeal</a>
             </div>
 
             <div class="col-md-6 order-md-2 order-4" id="navForm">
 
                 <form class="w-100 pl-4" id="form">
                     <div class="form-row align-items-center jusify-content-center">
-                        <div class="my-1 input-group input-group">
-                            <input type="search" class="display-3 form-control" placeholder="Search what you want..." style="font-family: font-family: 'Poppins', sans-serif;">
+                        <div class="my-1 input-group input-group search-box">
+                            <input value="" id="searchInput" onkeyup="" type="search" class="display-3 form-control" placeholder="Search what you want..." style="font-family: font-family: 'Poppins', sans-serif;">
+                            <div id="result" class="bg-light"></div>
                             <div class="input-group-append">
                                 <button type="submit" class="btn btn-light"><i class="fas fa-search" style="color: #17a2b8"></i></button>
                             </div>
@@ -132,7 +133,7 @@
 
                 ?>
 
-                <button class="btn btn-light mr-0 pr-0" id="" style="background: transparent;outline: none;border: none;"><i style="font-size: 20px;" class="text-white fas fa-shopping-basket"></i></button>
+                <a href="http://localhost/Ecommerce%20website%20--%20doSoDeal/orders" class="btn btn-light mr-0 pr-0" id="" style="background: transparent;outline: none;border: none;"><i style="font-size: 20px;" class="text-white fas fa-shopping-basket"></i></a>
 
                 <?php
 

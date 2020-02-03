@@ -2,13 +2,13 @@
 
 session_start();
 
-        if(isset($_POST['first_name'])&&($_POST['last_name'])&&($_POST['phone'])&&($_POST['email'])&&($_POST['address'])&&($_POST['state'])&&($_POST['city'])&&($_POST['pincode'])&&($_POST['name_on_card'])&&($_POST['debit_card_no'])&&($_POST['expire'])&&($_POST['cvv'])) {
+if(isset($_POST['first_name'])&&($_POST['last_name'])&&($_POST['phone'])&&($_POST['email'])&&($_POST['address'])&&($_POST['state'])&&($_POST['city'])&&($_POST['pincode'])&&($_POST['name_on_card'])&&($_POST['debit_card_no'])&&($_POST['expire'])&&($_POST['cvv'])) {
 
-    $_SESSION['emptyCart'] = 'empty';
+  $_SESSION['emptyCart'] = 'empty';
 
     // echo '<script>alert()</script>';
 
-  }
+}
 
 $user = 'user';
 $userG = 'Greetings';
@@ -27,32 +27,32 @@ if(isset($_COOKIE['user_id'])) {
 <html lang="en">
 
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-	<meta name="Author" description="Sanjay Sahu Bandla">
+  <meta name="Author" description="Sanjay Sahu Bandla">
 
-	<title>eCommerce Website - doSoDeal</title>
+  <title>eCommerce Website - doSoDeal</title>
 
-	<!-- Bootstrap CSS CDN -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-	<!-- Custom CSS -->
-	<link rel="stylesheet" href="http://localhost/Ecommerce%20website%20--%20doSoDeal/style.css">
-	<!-- Scrollbar Custom CSS -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="http://localhost/Ecommerce%20website%20--%20doSoDeal/style.css">
+  <!-- Scrollbar Custom CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 
-	<!-- Font Awesome JS -->
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+  <!-- Font Awesome JS -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
 
-	<!-- jQuery CDN - Slim version (=without AJAX) -->
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<!-- JS, Popper.js, and jQuery - Bootstrap-->
-	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-	<!-- jQuery Custom Scroller CDN -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+  <!-- jQuery CDN - Slim version (=without AJAX) -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <!-- JS, Popper.js, and jQuery - Bootstrap-->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <!-- jQuery Custom Scroller CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
   <!-- paypal -->
   <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Ensures optimal rendering on mobile devices. -->
@@ -60,6 +60,9 @@ if(isset($_COOKIE['user_id'])) {
 
   <!-- custom js control -->
   <script type="text/javascript" src="control.js"></script>
+
+    <!-- Ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 
   <style type="text/css">
@@ -417,123 +420,124 @@ if(isset($_COOKIE['user_id'])) {
          $name = htmlspecialchars($name);
          $value = htmlspecialchars($value);
 
-         $sql2 = "SELECT *, SUM(price) AS total_money FROM $Ccat WHERE id = '$Cid'";
-         $query2 = mysqli_query($con,$sql2);
+         // $sql2 = "SELECT *, SUM(price) AS total_money FROM $Ccat WHERE id = '$Cid'";
+         // $query2 = mysqli_query($con,$sql2);
 
-         if(mysqli_num_rows($query2) > 0) {
+         // if(mysqli_num_rows($query2) > 0) {
 
-          while ($record = mysqli_fetch_array($query2)) {
+         //  while ($record = mysqli_fetch_array($query2)) {
 
-            $total = $record['total_money'];
+         //    $total = $record['total_money'];
 
-            $sum += $total;
+         //    $sum += $total;
 
-            global $cartPrice, $cartTitle;
+         //    global $cartPrice, $cartTitle;
 
-            $cartPrice = $record['price'];
-            $cartTitle = $record['title'];
-            $cartCategory = $record['category'];//
+         //    $cartPrice = $record['price'];
+         //    $cartTitle = $record['id'];
+         //    $cartCategory = $record['category'];
 
-         global $query;
+         //    global $query;
 
-         $sql = array();
+            $sql = array();
+            $query = array();
 
-         $product_id = $name[0];
-         $product_category = substr($name, 2);
+            $product_id = $name[0];
+            $product_category = substr($name, 2);
 
-         $sql[$j] = "INSERT INTO orders VALUES('$orderId','$userId','$firstName', '$lastName', '$phone', '$email', '$address', '$state', '$city', '$pincode', '$name_on_card','$debit_card_no','$expire','$cvv','$cartTitle','$cartCategory','$sum')";
+            $sql[$j] = "INSERT INTO orders VALUES('$orderId','$userId','$firstName', '$lastName', '$phone', '$email', '$address', '$state', '$city', '$pincode', '$name_on_card','$debit_card_no','$expire','$cvv','$product_id','$product_category','$sum',CURRENT_TIMESTAMP)";
 
-         $query = mysqli_query($con,$sql[$j]);
+            $query = mysqli_query($con,$sql[$j]);
 
-         $j++;
-       }
+            $j++;
+          // }
+        // }
+
+      }
+
+      if(!$query) {
+       echo "<script>alert('Your order placed successfully. Check them in your orders section !');
+       window.location = '/Ecommerce%20website%20--%20doSoDeal/index.php';</script>";
      }
 
-       }
+     else {
 
-       if(!$query) {
-        echo "<script>alert('Your order placed successfully. Check them in your orders section !');
-        window.location = '/Ecommerce%20website%20--%20doSoDeal/index.php';</script>";
-      }
+      echo '
 
-      else {
-
-        echo '
-
-        <div class="text-center">
+      <div class="text-center">
 
 
 
-        <!-- Button HTML (to Trigger Modal) -->
-        <a href="#myModal" id="directToHome" class="d-none trigger-btn" data-toggle="modal" id=
-        confirm>Click to Open Confirm Modal</a>
-        </div>
+      <!-- Button HTML (to Trigger Modal) -->
+      <a href="#myModal" id="directToHome" class="d-none trigger-btn" data-toggle="modal" id=
+      confirm>Click to Open Confirm Modal</a>
+      </div>
 
-        <!-- Modal HTML -->
-        <div id="myModal" class="modal fade">
-        <div class="modal-dialog modal-confirm">
-        <div class="modal-content mw-100">
-        <div class="modal-header">
-        <div class="icon-box">
-        <i class="material-icons">&#10004;</i>
-        </div>        
-        <div class="modal-title text-center mx-auto">Awesome!</div> 
-        </div>
-        <div class="modal-body">
-        <p class="text-center">Your order has been placed successfully. Click ok to go back to the home page.</p>
-        </div>
-        <div class="modal-footer">
-        <div href="http://localhost/Ecommerce%20website%20--%20doSoDeal/" class="d-flex align-items-center justify-content-center btn btn-success btn-block" data-dismiss="modal" onclick="deleteCookies()">OK</div>
-        </div>
-        </div>
-        </div>
-        </div>     ';
-
-      }
+      <!-- Modal HTML -->
+      <div id="myModal" class="modal fade">
+      <div class="modal-dialog modal-confirm">
+      <div class="modal-content mw-100">
+      <div class="modal-header">
+      <div class="icon-box">
+      <i class="material-icons">&#10004;</i>
+      </div>        
+      <div class="modal-title text-center mx-auto">Awesome!</div> 
+      </div>
+      <div class="modal-body">
+      <p class="text-center">Your order has been placed successfully. Click ok to go back to the home page.</p>
+      </div>
+      <div class="modal-footer">
+      <div href="http://localhost/Ecommerce%20website%20--%20doSoDeal/" class="d-flex align-items-center justify-content-center btn btn-success btn-block" data-dismiss="modal" onclick="deleteCookies()">OK</div>
+      </div>
+      </div>
+      </div>
+      </div>     ';
 
     }
+
+  }
+}
+
+mysqli_close($con);
+
+?>
+
+<script type="text/javascript">
+
+  function redeem() {
+
+    var promoCode = $('#promoCode').val();
+
+    if(promoCode != '') {
+      alert('Enter valid promo code');
+    }
+
+    else {
+      alert('Promo code is required');
+    }
+
   }
 
-  mysqli_close($con);
+  $(document).ready(function() {
 
-  ?>
+    $('#directToHome').click();
+  });
 
-  <script type="text/javascript">
+  function deleteCookies() {
 
-    function redeem() {
-
-      var promoCode = $('#promoCode').val();
-
-      if(promoCode != '') {
-        alert('Enter valid promo code');
-      }
-
-      else {
-        alert('Promo code is required');
-      }
-
-    }
-
-    $(document).ready(function() {
-
-      $('#directToHome').click();
-    });
-
-    function deleteCookies() {
-
-      document.cookie.split(";").forEach(function(c) {
-        var date = new Date();
-        date.setTime(date.getTime()+(10*1000));
-        var expires = "; expires="+date.toGMTString();
+    document.cookie.split(";").forEach(function(c) {
+      var date = new Date();
+      date.setTime(date.getTime()+(10*1000));
+      var expires = "; expires="+date.toGMTString();
 
 
-        
+      
         // document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + date.toGMTString() + ";path=/"); 
         window.location = '/Ecommerce%20website%20--%20doSoDeal/index.php';
       });
-    }
+  }
 
-  </script>
+</script>
 
 </body>
 

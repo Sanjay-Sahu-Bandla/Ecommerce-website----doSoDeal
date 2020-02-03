@@ -150,33 +150,69 @@ function removeProduct(Cid,Ccat) {
 var cookieRegistry = [];
 
 function listenCookieChange(cookieName, callback) {
-    setInterval(function() {
-        if (cookieRegistry[cookieName]) {
-            if (readCookie(cookieName) != cookieRegistry[cookieName]) {
+	setInterval(function() {
+		if (cookieRegistry[cookieName]) {
+			if (readCookie(cookieName) != cookieRegistry[cookieName]) {
                 // update registry so we dont get triggered again
                 cookieRegistry[cookieName] = readCookie(cookieName);
                 return callback();
             }
         } else {
-            cookieRegistry[cookieName] = readCookie(cookieName);
+        	cookieRegistry[cookieName] = readCookie(cookieName);
         }
     }, 100);
 }
 
 
 function readCookie(name) {
-    var nameEQ = name + "=";
-    var ca = document.cookie.split(';');
-    for (var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-    }
-    return null;
+	var nameEQ = name + "=";
+	var ca = document.cookie.split(';');
+	for (var i = 0; i < ca.length; i++) {
+		var c = ca[i];
+		while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+	}
+	return null;
 }
 
 listenCookieChange('cookiename', function() {
-    Location.reload();
+	Location.reload();
 });
 
 window.onload = '';
+
+//search product
+
+$(document).ready(function() {
+
+	$('input[type="search"]').keyup(function() {
+
+		var inputText  = $('input[type="search"]').val();
+
+		// alert(inputText);
+
+		if(inputText.length > 0) {
+
+			// $('#result').html(inputText);
+			$('#result').css('display','block');
+
+			$.ajax({    //create an ajax request to display.php
+		        type: "GET",
+		        keyword: inputText,
+		        url: "Database/searchProduct.php?keyword="+inputText,    //expect html to be returned                
+		        success: function(response){                    
+		            $("#result").html(response); 
+		            // alert(response);
+		        }
+
+		    }); //ajax
+
+		}
+
+		else {
+			$('#result').html('');
+			$('#result').css('display','none');
+		}
+
+	});
+});
