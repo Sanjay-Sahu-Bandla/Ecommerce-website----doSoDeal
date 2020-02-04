@@ -283,5 +283,26 @@ function getOrderDetails($con,$user_id) {
 
 }
 
+function getProductsByCategory($con,$cat) {
+
+	$sql = "SELECT * FROM $cat";
+	$query = mysqli_query($con,$sql);
+
+	if(mysqli_num_rows($query) > 0) {
+
+		while ($record = mysqli_fetch_array($query)) {
+
+			echo '<a href="http://localhost/Ecommerce%20website%20--%20doSoDeal/product/' . $record['id'] . '/'.$record['category'].'" class="col-6 col-md-2 card m-md-2 m-sm-1">
+				<img class="card-img-top mt-1" src="data:image/jpeg;base64,'. base64_encode($record['image']) .'" alt="Card image cap">
+				<div class="card-body">
+					<p class="card-text mb-1">'.add3dots($record['title'],"...",9).'</p>
+					<div class="card-text text-success my-0"><i class="mr-1 fas fa-rupee-sign"></i>'. number_format($record['price']) .'</div>
+			<p class="card-text text-muted my-0 text-muted" style="font-size: 16px">mobiles</p>
+				</div>
+			</a>';
+		}
+	}
+
+}
 
 ?>

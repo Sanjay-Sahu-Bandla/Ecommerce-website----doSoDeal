@@ -38,13 +38,13 @@
             <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Shop by catagory</a>
             <ul class="collapse list-unstyled" id="homeSubmenu">
                 <li>
-                    <a href="#">Mobiles</a>
+                    <a href="http://localhost/Ecommerce%20website%20--%20doSoDeal/category/mobiles">Mobiles</a>
                 </li>
                 <li>
-                    <a href="#">Clothes</a>
+                    <a href="http://localhost/Ecommerce%20website%20--%20doSoDeal/category/clothes">Clothes</a>
                 </li>
                 <li>
-                    <a href="#">Accessories</a>
+                    <a href="http://localhost/Ecommerce%20website%20--%20doSoDeal/category/accessories">Accessories</a>
                 </li>
             </ul>
         </li>

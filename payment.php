@@ -59,11 +59,7 @@ if(isset($_COOKIE['user_id'])) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge" /> <!-- Optimal Internet Explorer compatibility -->
 
   <!-- custom js control -->
-  <script type="text/javascript" src="control.js"></script>
-
-    <!-- Ajax -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
+  <script type="text/javascript" src="http://localhost/Ecommerce%20website%20--%20doSoDeal/control.js"></script>
 
   <style type="text/css">
     body {
@@ -150,19 +146,6 @@ if(isset($_COOKIE['user_id'])) {
 </head>
 
 <body class="">
-
-  <!-- paypal -->
-
-  <script
-    src="https://www.paypal.com/sdk/js?client-id=SB_CLIENT_ID"> // Required. Replace SB_CLIENT_ID with your sandbox client ID.
-  </script>
-  <div id="paypal-button-container"></div>
-
-
-  <script>
-    paypal.Buttons().render('#paypal-button-container');
-    // This function displays Smart Payment Buttons on your web page.
-  </script>
 
   <?php include_once("Database/db.php"); ?>
   <?php include_once("Database/operations.php"); ?>
@@ -420,25 +403,6 @@ if(isset($_COOKIE['user_id'])) {
          $name = htmlspecialchars($name);
          $value = htmlspecialchars($value);
 
-         // $sql2 = "SELECT *, SUM(price) AS total_money FROM $Ccat WHERE id = '$Cid'";
-         // $query2 = mysqli_query($con,$sql2);
-
-         // if(mysqli_num_rows($query2) > 0) {
-
-         //  while ($record = mysqli_fetch_array($query2)) {
-
-         //    $total = $record['total_money'];
-
-         //    $sum += $total;
-
-         //    global $cartPrice, $cartTitle;
-
-         //    $cartPrice = $record['price'];
-         //    $cartTitle = $record['id'];
-         //    $cartCategory = $record['category'];
-
-         //    global $query;
-
             $sql = array();
             $query = array();
 
@@ -450,9 +414,6 @@ if(isset($_COOKIE['user_id'])) {
             $query = mysqli_query($con,$sql[$j]);
 
             $j++;
-          // }
-        // }
-
       }
 
       if(!$query) {
@@ -463,7 +424,6 @@ if(isset($_COOKIE['user_id'])) {
      else {
 
       echo '
-
       <div class="text-center">
 
 
@@ -526,13 +486,6 @@ mysqli_close($con);
   function deleteCookies() {
 
     document.cookie.split(";").forEach(function(c) {
-      var date = new Date();
-      date.setTime(date.getTime()+(10*1000));
-      var expires = "; expires="+date.toGMTString();
-
-
-      
-        // document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + date.toGMTString() + ";path=/"); 
         window.location = '/Ecommerce%20website%20--%20doSoDeal/index.php';
       });
   }

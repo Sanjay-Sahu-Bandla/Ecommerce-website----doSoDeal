@@ -97,7 +97,7 @@ function placeOrder() {
 
 		var unique_order_id = Date.now();
 
-		window.location = 'payment.php?order_id='+unique_order_id;
+		window.location = 'payment/'+unique_order_id;
 	}
 
 	else {
