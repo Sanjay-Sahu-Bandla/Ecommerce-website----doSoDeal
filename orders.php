@@ -105,7 +105,11 @@ $userG = 'Greetings';
 
             else {
 
-                echo "<h4>Please log in to see your products</h4>";
+                echo "<div class''>
+
+                <div class='d-flex justify-content-center align-items-center card-text text-danger shadow m-2 my-4 p-2'>Please log in to see your products</div>
+
+                </div>";
             }
 
             ?>

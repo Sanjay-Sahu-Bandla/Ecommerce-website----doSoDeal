@@ -15,15 +15,15 @@ if(isset($_SESSION['emptyCart'])) {
         }
 
         if (isset($_COOKIE['currentCartValue'])) {
-                setcookie("currentCartValue", "", time() - 1, "/");
+            setcookie("currentCartValue", "", time() - 1, "/");
         }
 
 
-        echo '<script>alert(0)</script>';
+        // echo '<script>alert(0)</script>';
     }
 
     else {
-      echo '<script>alert(1)</script>';
+      // echo '<script>alert(1)</script>';
 
   }
 
@@ -103,17 +103,17 @@ $userG = 'Greetings';
      //         echo $_COOKIE['currentCartValue'];
      //    }
 
-     ?>
-     <div class="carouselBanner">
-        <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-                <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner" role="listbox" style="max-height: 420px !important; width: 100%;">
-                <div class="carousel-item active" data-interval="4000">
-                    <img src="images/offerClothes1.jpg" class="rounded shadow d-block w-100" alt="..." style="max-height: 420px !important;">
+        ?>
+        <div class="carouselBanner">
+            <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox" style="max-height: 420px !important; width: 100%;">
+                    <div class="carousel-item active" data-interval="4000">
+                        <img src="images/offerClothes1.jpg" class="rounded shadow d-block w-100" alt="..." style="max-height: 420px !important;">
                         <!-- <div class="carousel-caption d-none d-md-block">
                           <h5>Second slide label</h5>
                           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -157,11 +157,10 @@ $userG = 'Greetings';
                 getMobilesData($con);
                 
 
-                if(!isset($_COOKIE['user'])) {
+// if(!isset($_COOKIE['user'])) {
 
-                    header('location:/Ecommerce%20website%20--%20doSoDeal/index.php');
-                }
-
+//     header('location:/Ecommerce%20website%20--%20doSoDeal/index.php');
+// }
 
                 ?>
             </div>
@@ -249,18 +248,18 @@ $userG = 'Greetings';
             </div>
         </div>
 
-                <!-- Footer -->
+        <!-- Footer -->
 
-                <?php include_once('assets/footer.php') ?>
-                
-                <!-- Footer -->
-            </div>
-        </div>
+        <?php include_once('assets/footer.php') ?>
 
-        <div class="overlay"></div>
+        <!-- Footer -->
+    </div>
+</div>
 
-        <!-- custom js control -->
-        <script type="text/javascript" src="control.js"></script>
-    </body>
+<div class="overlay"></div>
 
-    </html>
+<!-- custom js control -->
+<script type="text/javascript" src="control.js"></script>
+</body>
+
+</html>

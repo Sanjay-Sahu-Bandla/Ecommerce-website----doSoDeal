@@ -33,7 +33,9 @@
     </div>
 
     <ul class="list-unstyled components">
-        <p>Home</p>
+        <li>
+            <a href="http://localhost/Ecommerce%20website%20--%20doSoDeal">Home</a>
+        </li>
         <li class="active">
             <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Shop by catagory</a>
             <ul class="collapse list-unstyled" id="homeSubmenu">

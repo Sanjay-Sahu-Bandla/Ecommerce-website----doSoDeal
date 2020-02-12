@@ -30,9 +30,6 @@ $(document).ready(function() {
 
 		var nf = new Intl.NumberFormat();
 		nf.format(iprice);
-		// iprice.toLocaleString();
-		// numberWithCommas(iprice);
-		// alert(iprice);
 
 		$('#price').html(iprice);
 		function numberWithCommas(x) {
@@ -189,11 +186,8 @@ $(document).ready(function() {
 
 		var inputText  = $('input[type="search"]').val();
 
-		// alert(inputText);
-
 		if(inputText.length > 0) {
 
-			// $('#result').html(inputText);
 			$('#result').css('display','block');
 
 			$.ajax({    //create an ajax request to display.php

@@ -97,30 +97,9 @@ $userG = 'Greetings';
 						<p><i  class="fas fa-shopping-cart p-0 mr-2"  style="color: #17a2b8;"></i>No cost EMI ₹2,500/month. Standard EMI also available</p><br>
 					</div><hr>
 
-					<div class="row">
-						<div class="col-3 text-muted">Warranty</div>
-						<div class="col-9">Brand Warranty of 1 Year Available for Mobile</div>
-					</div><br>
-					<div class="row">
-						<div class="col-3 text-muted">Color</div>
-						<div class="col-9">Navy Blue</div>
-					</div><br>
-					<div class="row">
-						<div class="col-3 text-muted">ROM I ROM</div>
-						<div class="col-9">8 GB RAM I 128 GB ROMH</div>
-					</div><br>
-					<div class="row">
-						<div class="col-3 text-muted">Highlights</div>
-						<div class="col-9">
-							<ul style="list-style-type: circle;">
-								<li>6 GB RAM | 128 GB ROM</li>
-								<li>16.23 cm (6.39 inch) Display</li>
-								<li>4000 mAh Battery</li>
-								<li>SM855 (Qualcomm Snapdragon Premium Tier) Processor</li>
-								<li>48MP + 12MP | 20MP Front Camera</li>
-							</ul>
-						</div>
-					</div>
+					<!-- Product Details -->
+
+					<?php echo $description;?>
 
 				</div>    			
 			</div>

@@ -126,7 +126,7 @@
 
 <!-- Copyright -->
 <div class="footer-copyright text-center py-3 text-muted" style="background: #00000033;">© <?php echo strftime("%Y"); ?> Copyright:
-    <a href="https://mdbootstrap.com/education/bootstrap/" style="color: #b5b5b5"> dosodeal.com</a>
+    <a href="http://localhost/Ecommerce%20website%20--%20doSoDeal/" style="color: #b5b5b5"> dosodeal.com</a>
 </div>
 <!-- Copyright -->
 

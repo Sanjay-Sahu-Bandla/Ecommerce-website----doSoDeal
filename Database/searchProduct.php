@@ -4,19 +4,9 @@ include_once('db.php');
 
 $keyword = $_GET['keyword'];
 
-// $sql = "SELECT *
-// FROM mobiles m
-// JOIN clothes c ON m.id=c.id
-// JOIN accessories a ON a.id=c.id
-// WHERE title LIKE '%$keyword%' ";
-
-// $sql = "SELECT clothes.title, accessories.title
-// FROM clothes
-// INNER JOIN accessories ON clothes.id = accessories.id WHERE title LIKE '%$keyword%' ;"
-
-// $sql = "SELECT clothes.title, accessories.title FROM clothes INNER JOIN accessories ON accessories.id = clothes.id WHERE clothes.title OR accessories.title LIKE '%$keyword%' ";
-
-$sql = "SELECT * FROM accessories WHERE title LIKE '%$keyword%' ";
+$sql = "SELECT * FROM accessories WHERE title LIKE '%$keyword%'
+		UNION SELECT * FROM clothes WHERE title LIKE '%$keyword%'
+		UNION SELECT * FROM mobiles WHERE title LIKE '%$keyword%' ORDER BY title ";
 
 $query = mysqli_query($con,$sql);
 

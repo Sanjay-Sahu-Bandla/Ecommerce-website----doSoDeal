@@ -11,9 +11,9 @@ function getMobilesData($con) {
 
 		while ($record = mysqli_fetch_array($query)) {
 
-			echo '<a href="product/' . $record['id'] . '/mobiles" class="col-md-2 col-sm-4 d-flex align-items-stretch m-0 pr-0">
+			echo '<a href="product/' . $record['id'] . '/mobiles" class="col-md-2 col-sm-4 d-flex align-items-stretch m-0 pr-0 mb-0 pb-0">
 			<div class="card border-0 mb-2"><img src="data:image/jpeg;base64,'. base64_encode($record['image']) .'" class="card-img-top my-0" alt="...">
-			<div class="card-body text-center">
+			<div class="card-body text-center mb-0 pb-0 ">
 			<div class="font-weight-bloder card-title my-0 mx-0 px-0">'.add3dots($record['title'],"...",9).'</div>
 			<div class="card-text text-success my-0"><i class="mr-1 fas fa-rupee-sign"></i> '. number_format($record['price']) .'</div>
 			<p class="card-text my-0 text-muted" style="font-size: ">'. $record['category'] .'</p>
@@ -33,9 +33,9 @@ function getClothesData($con) {
 
 		while ($record = mysqli_fetch_array($query)) {
 
-			echo '<a href="product/' . $record['id'] . '/clothes" class="col-md-2 col-sm-4 d-flex align-items-stretch m-0 pr-0">
+			echo '<a href="product/' . $record['id'] . '/clothes" class="col-md-2 col-sm-4 d-flex align-items-stretch m-0 pr-0 mb-0 pb-0">
 			<div class="card border-0 mb-2"><img src="data:image/jpeg;base64,'. base64_encode($record['image']) .'" class="card-img-top my-0" alt="...">
-			<div class="card-body text-center">
+			<div class="card-body text-center mb-0 pb-0 ">
 			<div class="font-weight-bloder card-title my-0 mx-0 px-0">'.add3dots($record['title'],"...",9).'</div>
 			<div class="card-text text-success my-0"><i class="mr-1 fas fa-rupee-sign"></i> '. number_format($record['price']) .'</div>
 			<p class="card-text my-0 text-muted" style="font-size: ">'. $record['category'] .'</p>
@@ -55,9 +55,9 @@ function getAccessoriessData($con) {
 
 		while ($record = mysqli_fetch_array($query)) {
 
-			echo '<a href="product/' . $record['id'] . '/accessories" class="col-md-2 col-sm-4 d-flex align-items-stretch m-0 pr-0">
+			echo '<a href="product/' . $record['id'] . '/accessories" class="col-md-2 col-sm-4 d-flex align-items-stretch m-0 pr-0 mb-0 pb-0">
 			<div class="card border-0 mb-2"><img src="data:image/jpeg;base64,'. base64_encode($record['image']) .'" class="card-img-top my-0" alt="...">
-			<div class="card-body text-center">
+			<div class="card-body text-center mb-0 pb-0 ">
 			<div class="font-weight-bloder card-title my-0 mx-0 px-0">'.add3dots($record['title'],"...",9).'</div>
 			<div class="card-text text-success my-0"><i class="mr-1 fas fa-rupee-sign"></i> '. number_format($record['price']) .'</div>
 			<p class="card-text my-0 text-muted" style="font-size: ">'. $record['category'] .'</p>
@@ -69,6 +69,10 @@ function getAccessoriessData($con) {
 }
 
 function add3dots($string, $dots, $limit) {
+
+	if($string == 'Oppo Reno 2') {
+		// $string = 'Oppo R...';
+	}
 
 	if(strlen($string)>$limit) {
 
@@ -87,16 +91,22 @@ function getProductDetails($con,$Pid,$cat) {
 	$sql = "SELECT * FROM $cat WHERE id = $Pid";
 	$query = mysqli_query($con,$sql);
 
+	if (!$query) {
+	    printf("Error: %s\n", mysqli_error($con));
+	    exit();
+	}
+
 	if(mysqli_num_rows($query) > 0) {
 
 		while ($record = mysqli_fetch_array($query)) {
 
-			global $id, $title, $price, $image;
+			global $id, $title, $price, $image, $description;
 
 			$id = $record['id'];
 			$title = $record['title'];
 			$price = $record['price'];
 			$image = $record['image'];
+			$description = $record['description'];
 
 		}
 	}
@@ -198,6 +208,7 @@ if(isset($_POST['mail'])&&isset($_POST['password'])) {
 
 		$userG = 'Greetings';
 
+		setcookie('user_id', $id, time() + (86400), '/');
 		setcookie($user, $userName, time() + (86400), '/');
 		setcookie($userG, $userName, time() + (5), '/');
 
