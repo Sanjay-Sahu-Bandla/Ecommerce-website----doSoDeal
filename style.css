@@ -1,70 +1,66 @@
-/*
-    DEMO STYLE
-    */
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
-    @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #fafafa;
+}
 
-    body {
-        font-family: 'Poppins', sans-serif;
-        background: #fafafa;
-    }
+p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+}
 
-    p {
-        font-family: 'Poppins', sans-serif;
-        font-size: 1.1em;
-        font-weight: 300;
-        line-height: 1.7em;
-    }
+a,
+a:hover,
+a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
 
-    a,
-    a:hover,
-    a:focus {
-        color: inherit;
-        text-decoration: none;
-        transition: all 0.3s;
-    }
+.navbar {
+    padding: 15px 10px;
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 5px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
 
-    .navbar {
-        padding: 15px 10px;
-        background: #fff;
-        border: none;
-        border-radius: 0;
-        margin-bottom: 5px;
-        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-    }
+.navbar-btn {
+    box-shadow: none;
+    outline: none !important;
+    border: none;
+}
 
-    .navbar-btn {
-        box-shadow: none;
-        outline: none !important;
-        border: none;
-    }
+nav #navForm form button.btn {
+    /*border: 2px solid #17a2b8;*/
+    border-left: none;
+    border-radius: ;
+    background: #fff;
+    border-top-right-radius: 19px;
+    border-bottom-right-radius: 19px;
+}
 
-    nav #navForm form button.btn {
-        /*border: 2px solid #17a2b8;*/
-        border-left: none;
-        border-radius: ;
-        background: #fff;
-        border-top-right-radius: 19px;
-        border-bottom-right-radius: 19px;
-    }
+#navForm .form-control {
+    /*outline: 2px solid #17a2b8 !important;*/
+    border: none;
+    border-right: none;
+    border-top-left-radius: 19px;
+    border-bottom-left-radius: 19px;
+}
 
-    #navForm .form-control {
-        /*outline: 2px solid #17a2b8 !important;*/
-        border: none;
-        border-right: none;
-        border-top-left-radius: 19px;
-        border-bottom-left-radius: 19px;
-    }
-
-    input[type='search']:focus,
-    button[type='submit']:focus {
-        border: none !important;
-        outline: none !important;
-        box-shadow: none !important;
-        /*transform: scaleY(0.9);*/
-        /*transition: 0.15s;*/
-        /*box-shadow: 0 0 20px rgba(0,0,0,0.3)*/
-    }
+input[type='search']:focus,
+button[type='submit']:focus {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    /*transform: scaleY(0.9);*/
+    /*transition: 0.15s;*/
+    /*box-shadow: 0 0 20px rgba(0,0,0,0.3)*/
+}
 
 /* ---------------------------------------------------
     SIDEBAR STYLE
@@ -294,7 +290,7 @@
 
   .productRow-Mobiles img {
     height: 18vh;
- }
+}
 
 }
 
@@ -453,15 +449,15 @@
 }
 
 #result{
-        position: absolute;        
-        z-index: 99;
-        top: 100%;
-        left: 0;
-        background: #fff;
-        width: 100%;
-        padding: 6.8px;
-        padding-left: 10px;
-        border-radius: 18px;
-        margin-top: 3px;
-        display: none;
-    }
+    position: absolute;        
+    z-index: 99;
+    top: 100%;
+    left: 0;
+    background: #fff;
+    width: 100%;
+    padding: 6.8px;
+    padding-left: 10px;
+    border-radius: 18px;
+    margin-top: 3px;
+    display: none;
+}

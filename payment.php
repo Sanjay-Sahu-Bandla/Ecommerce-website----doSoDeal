@@ -417,8 +417,7 @@ if(isset($_COOKIE['user_id'])) {
       }
 
       if(!$query) {
-       echo "<script>alert('Your order placed successfully. Check them in your orders section !');
-       window.location = '/Ecommerce%20website%20--%20doSoDeal/index.php';</script>";
+       echo "<script>alert('Your order not placed successfully. Something went wrong !');";
      }
 
      else {
