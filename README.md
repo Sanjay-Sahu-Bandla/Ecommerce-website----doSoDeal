@@ -1,2 +1,2 @@
-# Ecommerce-website----doSoDeal
+# Ecommerce-website----DoSoDeal
  An online affiliate marketing.
